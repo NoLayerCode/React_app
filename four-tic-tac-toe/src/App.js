@@ -23,7 +23,55 @@ const App = () => {
 	};
 
 	const checkWinner = () => {
-
+		if (
+			itemArray[0] === itemArray[1] &&
+			itemArray[0] === itemArray[2] &&
+			itemArray[0] !== "empty"
+		  ) {
+			setWinMsg(`${itemArray[0]} won`);
+		  } else if (
+			itemArray[3] !== "empty" &&
+			itemArray[3] === itemArray[4] &&
+			itemArray[4] === itemArray[5]
+		  ) {
+			setWinMsg(`${itemArray[3]} won`);
+		  } else if (
+			itemArray[6] !== "empty" &&
+			itemArray[6] === itemArray[7] &&
+			itemArray[7] === itemArray[8]
+		  ) {
+			setWinMsg(`${itemArray[6]} won`);
+		  } else if (
+			itemArray[0] !== "empty" &&
+			itemArray[0] === itemArray[3] &&
+			itemArray[3] === itemArray[6]
+		  ) {
+			setWinMsg(`${itemArray[0]} won`);
+		  } else if (
+			itemArray[1] !== "empty" &&
+			itemArray[1] === itemArray[4] &&
+			itemArray[4] === itemArray[7]
+		  ) {
+			setWinMsg(`${itemArray[1]} won`);
+		  } else if (
+			itemArray[2] !== "empty" &&
+			itemArray[2] === itemArray[5] &&
+			itemArray[5] === itemArray[8]
+		  ) {
+			setWinMsg(`${itemArray[2]} won`);
+		  } else if (
+			itemArray[0] !== "empty" &&
+			itemArray[0] === itemArray[4] &&
+			itemArray[4] === itemArray[8]
+		  ) {
+			setWinMsg(`${itemArray[0]} won`);
+		  } else if (
+			itemArray[2] !== "empty" &&
+			itemArray[2] === itemArray[4] &&
+			itemArray[4] === itemArray[6]
+		  ) {
+			setWinMsg(`${itemArray[2]} won`);
+		  }
 	};
 
 	const changeItem = itemNumber => {
@@ -41,7 +89,7 @@ const App = () => {
 	};
 
 	return (
-		<Container className="p-5">
+		<Container className="p-5 ">
 			<ToastContainer position="bottom-center" />
 			<Row>
 				<Col md={6} className="offset-md-3">
@@ -50,16 +98,16 @@ const App = () => {
 							<h1 className="text-primary text-uppercase text-center">
 								{winMsg}
 							</h1>
-							<button color="success" block onClick={reloadGame} >Reload Game</button>
+							<Button color="success" block onClick={reloadGame} className="myButton">Reload Game</Button>
 						</div>
 					) : (
-						<h1 className="text-center text-warning">
+						<h1 className="text-center text-primary">
 							{isCross ? "Cross" : "Circle"} turns
 						</h1>
 					)}
 					<div className="grid">
 						{itemArray.map((item, i) => (
-							<Card>
+							<Card onClick={ () => changeItem(i) }>
 								<CardBody className="box">
 									<Icon name={item} />
 								</CardBody>
@@ -68,7 +116,6 @@ const App = () => {
 					</div>
 				</Col>
 			</Row>
-			{/* </ToastContainer> */}
 		</Container>
 	);
 };

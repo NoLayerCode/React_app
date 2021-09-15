@@ -1,7 +1,6 @@
 body {
-  background-color: #000000;
+  background-color: #cfd8dc;
 }
-
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -15,7 +14,12 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .icon {
-  font-size: 35px;
-  color: #ffffff;
+  font-size: 30px;
+  color: #413b3b;
+}
+
+.myButton{
+  width: 100%;
 }
